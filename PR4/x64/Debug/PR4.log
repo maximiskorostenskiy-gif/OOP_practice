@@ -1,2 +1,2 @@
-﻿MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
-C:\Users\user\Documents\pr__\PR4\x64\Debug\PR4.exe : fatal error LNK1120: 1 unresolved externals
+﻿  main.cpp
+  PR4.vcxproj -> C:\Users\user\Documents\pr__\PR4\x64\Debug\PR4.exe
