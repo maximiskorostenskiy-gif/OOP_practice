@@ -1,0 +1,10 @@
+.vs/
+*.slnx
+*.vsidx
+Debug/
+Release/
+x64/
+*.exe
+*.obj
+*.pdb
+*.user
