@@ -1,66 +1,60 @@
 #include <iostream>
-#include <string>
+#include "Medic.h"
+#include "Device.h"
 
 using namespace std;
 
-class Product
+void printMenu()
 {
-private:
-    string name;
-    string manufacturer;
-    double price;
-
-public:
-    Product()
-    {
-        this->name = "";
-        this->manufacturer = "";
-        this->price = 0.0;
-    }
-
-    Product(string name, string manufacturer, double price)
-    {
-        this->name = name;
-        this->manufacturer = manufacturer;
-        this->price = price;
-    }
-
-    void showProduct()
-    {
-        cout << "Name: " << name << ", Manuf: " << manufacturer << ", Price: " << price << endl;
-    }
-};
-
-class Medic : public Product
-{
-private:
-    string specialization;
-    int experience;
-
-public:
-    Medic() : Product()
-    {
-        this->specialization = "";
-        this->experience = 0;
-    }
-
-    Medic(string specialization, int experience, string name, string manufacturer, double price) : Product(name, manufacturer, price)
-    {
-        this->specialization = specialization;
-        this->experience = experience;
-    }
-
-    void showMedic()
-    {
-        showProduct();
-        cout << "Specialization: " << specialization << ", Experience: " << experience << endl;
-    }
-};
+    cout << "1. Add Medic" << endl;
+    cout << "2. Add Device" << endl;
+    cout << "Choice: ";
+}
 
 int main()
 {
-    Medic myMedic("Surgeon", 10, "Dr. House", "Princeton", 5000.0);
-    myMedic.showMedic();
+    Product* inventory[5];
+
+    for (int i = 0; i < 5; i++)
+    {
+        int choice;
+
+        cout << "\n--- Object " << (i + 1) << " ---\n";
+        printMenu();
+        cin >> choice;
+
+        string n, m, s, t;
+        double p;
+        int e, w;
+
+        cout << "Enter Name: "; cin >> n;
+        cout << "Enter Manufacturer: "; cin >> m;
+        cout << "Enter Price: "; cin >> p;
+
+        if (choice == 1)
+        {
+            cout << "Enter Specialization: "; cin >> s;
+            cout << "Enter Experience: "; cin >> e;
+            inventory[i] = new Medic(n, m, p, s, e);
+        }
+        else
+        {
+            cout << "Enter Type: "; cin >> t;
+            cout << "Enter Warranty (months): "; cin >> w;
+            inventory[i] = new Device(n, m, p, t, w);
+        }
+    }
+
+    cout << "\n--- List of Objects ---\n";
+    for (int i = 0; i < 5; i++)
+    {
+        inventory[i]->showInfo();
+    }
+
+    for (int i = 0; i < 5; i++)
+    {
+        delete inventory[i];
+    }
 
     return 0;
 }
